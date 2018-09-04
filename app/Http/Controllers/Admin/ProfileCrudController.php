@@ -131,6 +131,8 @@ class ProfileCrudController extends CrudController
         $this->data['entry'] = $this->crud->getEntry($id);
         $this->data['crud'] = $this->crud;
         $this->data['title'] = "Perfil do Teste Vocacional";
+        $this->crud->removeButton('view');
+        $this->crud->removeButton('delete');
         // load the view from /resources/views/vendor/backpack/crud/ if it exists, otherwise load the one in the package
         return view($this->crud->getShowView(), $this->data);
     }
