@@ -9,11 +9,13 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Http\Requests\PersonRequest as StoreRequest;
 use App\Http\Requests\PersonRequest as UpdateRequest;
+use App\Http\Requests\PersonRequest as StoreVocationalRequest;
 use App\Models\Question;
 use App\Models\Person;
 use App\Models\Answer;
 use App\Models\Profile;
 use App\Models\Schooling;
+
 
 /**
  * Class PersonCrudController
@@ -89,37 +91,45 @@ class PersonCrudController extends CrudController
                 'name' => 'name',
                 'type' => 'text',
                 'label' => 'Nome Completo',
+                'attributes' => [
+                    'required' => true
+                ],
                 'wrapperAttributes' => [
-                    'class' => 'col-md-6'
+                    'class' => 'form-group col-xs-12 col-sm-6'
                 ]
             ], [
                 'name' => 'email',
                 'type' => 'text',
                 'label' => 'E-mail',
+                'attributes' => [
+                    'required' => true
+                ],
                 'wrapperAttributes' => [
-                    'class' => 'col-md-6'
+                    'class' => 'form-group col-xs-12 col-sm-6'
                 ]
             ]
         ]);
         $this->crud->addFields([
-            [   // CustomHTML
-                'name' => 'separator1',
-                'type' => 'custom_html',
-                'value' => '<p></p>'
-            ], [
+            [
                 'name' => 'phone',
                 'type' => 'phone',
                 'label' => 'Telefone Contato',
+                'attributes' => [
+                    'required' => true
+                ],
                 'wrapperAttributes' => [
-                    'class' => 'col-md-4'
+                    'class' => 'form-group col-xs-12 col-sm-4'
                 ]
             ], [
                 'name' => 'birth_date',
                 'type' => 'date',
                 'label' => 'Data de Nascimento',
                 'default' => '2000-01-01',
+                'attributes' => [
+                    'required' => true
+                ],
                 'wrapperAttributes' => [
-                    'class' => 'col-md-4'
+                    'class' => 'form-group col-xs-12 col-sm-4'
                 ]
             ], [
                 'name' => 'schooling_id',
@@ -130,8 +140,11 @@ class PersonCrudController extends CrudController
                 'model' => 'App\Models\Schooling',
                 'label' => 'Nível de Escolaridade',
                 'default' => 3,
+                'attributes' => [
+                    'required' => true
+                ],
                 'wrapperAttributes' => [
-                    'class' => 'col-md-4'
+                    'class' => 'form-group col-xs-12 col-sm-4'
                 ]
             ]
         ]);
@@ -147,15 +160,17 @@ class PersonCrudController extends CrudController
                 'name' => "profile[" . $q->id . "]",
                 'label' => $q->description, // the input label
                 'type' => 'radio',
-                'key' => "$q->id",
                 'options' => $formAnswer,
-                'inline' => false
+                'inline' => false,
+                'attributes' => [
+                    'required' => true
+                ]
             ]);
         }
         $this->crud->addField([   // CustomHTML
             'name' => 'separator2',
             'type' => 'custom_html',
-            'value' => '<br><div class="box-header with-border"><h3 class="box-title">Dados para Avaliação</h3></div>'
+            'value' => '<div class="box-header with-border"><h3 class="box-title">Dados para Avaliação</h3></div>'
         ]);
         $this->crud->addFields($formProfile);
         if (backpack_auth()->guest()) {
@@ -178,25 +193,6 @@ class PersonCrudController extends CrudController
 
     public function store(StoreRequest $request)
     {
-        $this->validate($request, [
-            'name' => 'required|min:3|max:100',
-            'email' => 'required|email|min:5|max:255',
-            'phone' => 'required',
-            'birth_date' => 'required|date',
-            'profile' => 'required|array',
-            'schooling_id' => 'required|numeric'
-        ], [
-            'email.email' => 'O campo Email deve conter a estrutura de um email real.',
-            'name.required' => 'O campo Nome é obrigatório.',
-            'email.required' => 'O campo Email é obrigatório.',
-            'phone.required' => 'O campo Telefone é obrigatório.',
-            'birth_date.required' => 'O campo Data de Nascimento é obrigatório.',
-            'profile.required' => 'Escolher alternativas entre todas as perguntas do Teste Vocacional é obrigatório',
-            'schooling_id.required' => 'O campo Nível de Escolaridade é obrigatório.',
-            'birth_date.date' => 'Apenas Datas são aceitas no campo de Data de Nascimento',
-            'profile.array' => 'Responder ao Teste Vocacional é obrigatório',
-            'schooling_id.numeric' => 'Pelo menos 1 opção para o Nível de Escolaridade deve ser preenchido.'
-        ]);
         $request['phone'] = (int)str_replace(["(", ")", " ", "-"], "", $request['phone']);
         $request['profile_id'] = self::filterProfile($request);
         $redirect_location = parent::storeCrud($request);
@@ -231,7 +227,7 @@ class PersonCrudController extends CrudController
         return view('vendor.backpack.crud.create_vocational', $this->data);
     }
 
-    public function storeVocational(Request $request)
+    public function storeVocational(StoreVocationalRequest $request)
     {
         //$this->crud->hasAccessOrFail('create');
 
@@ -246,26 +242,6 @@ class PersonCrudController extends CrudController
                 $request->request->set($key, null);
             }
         }
-        $this->validate($request, [
-            'name' => 'required|min:3|max:100',
-            'email' => 'required|email|min:5|max:255',
-            'phone' => 'required',
-            'birth_date' => 'required|date',
-            'profile' => 'required|array',
-            'schooling_id' => 'required|numeric'
-        ], [
-            'email.email' => 'O campo Email deve conter a estrutura de um email real.',
-            'name.required' => 'O campo Nome é obrigatório.',
-            'email.required' => 'O campo Email é obrigatório.',
-            'phone.required' => 'O campo Telefone é obrigatório.',
-            'birth_date.required' => 'O campo Data de Nascimento é obrigatório.',
-            'profile.required' => 'Escolher alternativas entre todas as perguntas do Teste Vocacional é obrigatório',
-            'schooling_id.required' => 'O campo Nível de Escolaridade é obrigatório.',
-            'birth_date.date' => 'Apenas Datas são aceitas no campo de Data de Nascimento',
-            'profile.array' => 'Responder ao Teste Vocacional é obrigatório',
-            'schooling_id.numeric' => 'Pelo menos 1 opção para o Nível de Escolaridade deve ser preenchido.'
-        ]);
-
         $request['phone'] = (int)str_replace(["(", ")", " ", "-"], "", $request['phone']);
         $request['profile_id'] = self::filterProfile($request);
 

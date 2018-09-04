@@ -17,6 +17,3 @@ Route::group(['namespace' => '\Admin'], function () {
     Route::post('/', 'PersonCrudController@storeVocational')->name('vocational.store');
     Route::get('/{id}', 'ProfileCrudController@showVocaional')->name('vocational.show');
 });
-Auth::routes();
-
-/* Route::get('/home', 'HomeController@index')->name('home'); */
