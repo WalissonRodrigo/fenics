@@ -48,7 +48,7 @@
             "@php artisan key:generate",
             "@php artisan backpack:base:install --timeout=600",
             "@php artisan backpack:crud:install --timeout=600",
-            "@php artisan migrate:fresh --seed"
+            "@php artisan db:seed"
         ],
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
