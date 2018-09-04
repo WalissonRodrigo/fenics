@@ -17,10 +17,10 @@ class CreateAnswersTable extends Migration
             $table->increments('id');
             $table->string('description');
 
-            $table->unsignedInteger('question_id')->index('question_id');
+            $table->unsignedInteger('question_id')->index();
             $table->foreign('question_id')->on('questions')->references('id');
 
-            $table->unsignedInteger('profile_id')->index('profile_id');
+            $table->unsignedInteger('profile_id')->index();
             $table->foreign('profile_id')->on('profiles')->references('id');
 
             $table->timestamps();

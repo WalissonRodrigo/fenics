@@ -17,13 +17,13 @@ class CreatePeopleTable extends Migration
             $table->increments('id');
             $table->string('name', 100);
             $table->string('email');
-            $table->decimal('phone',11,0);
+            $table->decimal('phone', 11, 0);
             $table->date('birth_date')->index('birth_date');
 
-            $table->unsignedInteger('profile_id')->index('profile_id');
+            $table->unsignedInteger('profile_id')->index();
             $table->foreign('profile_id')->on('profiles')->references('id');
 
-            $table->unsignedInteger('schooling_id')->index('schooling_id');
+            $table->unsignedInteger('schooling_id')->index();
             $table->foreign('schooling_id')->on('schoolings')->references('id');
 
             $table->timestamps();
