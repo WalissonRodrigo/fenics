@@ -15,5 +15,5 @@ Route::group(['namespace' => '\Admin'], function () {
     // custom admin routes
     Route::get('/', 'PersonCrudController@createVocational')->name('vocational.create');
     Route::post('/', 'PersonCrudController@storeVocational')->name('vocational.store');
-    Route::get('/{id}', 'ProfileCrudController@showVocaional')->name('vocational.show');
+    Route::get('/profile/{id}', 'ProfileCrudController@showVocaional')->name('vocational.show');
 });
