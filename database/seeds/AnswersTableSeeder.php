@@ -1,0 +1,110 @@
+<?php
+
+use Illuminate\Database\Seeder;
+
+// composer require laracasts/testdummy
+use Laracasts\TestDummy\Factory as TestDummy;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
+use App\Models\Answer;
+
+class AnswersTableSeeder extends Seeder
+{
+    public function run()
+    {
+        $data = [
+            ['description' => 'Quer ir direto ao ponto.', 'question_id' => '1', 'profile_id' => '1', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['description' => 'Assegura que o grupo está seguindo todas as instruções.', 'question_id' => '1', 'profile_id' => '2', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['description' => 'Propõe uma apresentação surpreendente ou tocante.', 'question_id' => '1', 'profile_id' => '3', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['description' => 'Discute as ideias com o grupo.', 'question_id' => '1', 'profile_id' => '4', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['description' => 'Conduz o grupo a agir em determinada direção.', 'question_id' => '1', 'profile_id' => '5', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['description' => 'Analisa bem o escopo do trabalho antes de propor ações.', 'question_id' => '1', 'profile_id' => '6', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['description' => 'Pela sua objetividade.', 'question_id' => '2', 'profile_id' => '1', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['description' => 'Pela sua ótima capacidade de análise.', 'question_id' => '2', 'profile_id' => '2', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['description' => 'Por propor novas formas de fazer as coisas ou pelo seu senso estético aguçado.', 'question_id' => '2', 'profile_id' => '3', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['description' => 'Pelas suas ótimas habilidades de Comunicação.', 'question_id' => '2', 'profile_id' => '4', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['description' => 'Por ser bastante determinado.', 'question_id' => '2', 'profile_id' => '5', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['description' => 'Pela sua excelência em estruturar processos.', 'question_id' => '2', 'profile_id' => '6', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['description' => 'Máquinas, atividade corporal, alimentos, plantas ou animais.', 'question_id' => '3', 'profile_id' => '1', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['description' => 'Pesquisa, diagnóstico ou crítica.', 'question_id' => '3', 'profile_id' => '2', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['description' => 'Criação, expressão ou beleza.', 'question_id' => '3', 'profile_id' => '3', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['description' => 'Relacionamento, cuidado ou mediação interpessoal.', 'question_id' => '3', 'profile_id' => '4', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['description' => 'Estratégia, compra e venda.', 'question_id' => '3', 'profile_id' => '5', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['description' => 'Planejamento, ordenação ou cálculo.', 'question_id' => '3', 'profile_id' => '6', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['description' => 'Procura encerrar o assunto e partir logo para a ação.', 'question_id' => '4', 'profile_id' => '1', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['description' => 'Analisa a situação e avalia quais atitudes podem ser tomadas.', 'question_id' => '4', 'profile_id' => '2', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['description' => 'Sente o clima e tende a agir mais pela emoção que pela razão.', 'question_id' => '4', 'profile_id' => '3', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['description' => 'Tenta chegar em uma solução que seja boa para todo mundo.', 'question_id' => '4', 'profile_id' => '4', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['description' => 'O mais importante para mim é fazer as pessoas ao meu redor, felizes.', 'question_id' => '4', 'profile_id' => '5', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['description' => 'Levanta todos os pontos, buscando ser prudente na sua posição.', 'question_id' => '4', 'profile_id' => '6', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['description' => 'Realista.', 'question_id' => '5', 'profile_id' => '1', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['description' => 'Intelectual.', 'question_id' => '5', 'profile_id' => '2', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['description' => 'Sensível.', 'question_id' => '5', 'profile_id' => '3', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['description' => 'Empática.', 'question_id' => '5', 'profile_id' => '4', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['description' => 'Persuasiva.', 'question_id' => '5', 'profile_id' => '5', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['description' => 'Cautelosa.', 'question_id' => '5', 'profile_id' => '6', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['description' => 'Pode "colocar a mão na massa".', 'question_id' => '6', 'profile_id' => '1', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['description' => 'Aprende muito.', 'question_id' => '6', 'profile_id' => '2', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['description' => 'Surpreende ou emociona as pessoas.', 'question_id' => '6', 'profile_id' => '3', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['description' => 'Contribui com a sociedade.', 'question_id' => '6', 'profile_id' => '4', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['description' => 'Possui desafios.', 'question_id' => '6', 'profile_id' => '5', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['description' => 'Traz segurança.', 'question_id' => '6', 'profile_id' => '6', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['description' => 'Os fatos.', 'question_id' => '7', 'profile_id' => '1', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['description' => 'O estudo e a reflexão.', 'question_id' => '7', 'profile_id' => '2', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['description' => 'O prazer e as emoções.', 'question_id' => '7', 'profile_id' => '3', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['description' => 'O direito e bem-estar de todos.', 'question_id' => '7', 'profile_id' => '4', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['description' => 'O sucesso e o poder.', 'question_id' => '7', 'profile_id' => '5', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['description' => 'A rotina e a precisão.', 'question_id' => '7', 'profile_id' => '6', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['description' => 'Interagir ou pensar demais.', 'question_id' => '8', 'profile_id' => '1', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['description' => 'Lidar com emoções ou assuntos superficiais.', 'question_id' => '8', 'profile_id' => '2', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['description' => 'Seguir rotinas e regras.', 'question_id' => '8', 'profile_id' => '3', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['description' => 'Executar tarefas técnicas ou mecânicas.', 'question_id' => '8', 'profile_id' => '4', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['description' => 'Ser comandado.', 'question_id' => '8', 'profile_id' => '5', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['description' => 'Fazer algo sem ter manual ou explicação.', 'question_id' => '8', 'profile_id' => '6', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['description' => 'Demonstram preguiça ou submissão.', 'question_id' => '9', 'profile_id' => '1', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['description' => 'Emitem opinião sem conhecer o assunto a fundo.', 'question_id' => '9', 'profile_id' => '2', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['description' => 'Esperam resultados diferentes fazendo tudo igual.', 'question_id' => '9', 'profile_id' => '3', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['description' => 'Não respeitam as outras.', 'question_id' => '9', 'profile_id' => '4', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['description' => 'Demoram muito para tomar uma decisão.', 'question_id' => '9', 'profile_id' => '5', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['description' => 'Burlam ou ignoram regras.', 'question_id' => '9', 'profile_id' => '6', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['description' => 'Dá a chance de o aluno ter ou fazer suas experiências.', 'question_id' => '10', 'profile_id' => '1', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['description' => 'Estimula o aluno a questionar e aprofundar conhecimentos.', 'question_id' => '10', 'profile_id' => '2', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['description' => 'Ajuda a identificar os interesses e talentos de seus alunos.', 'question_id' => '10', 'profile_id' => '3', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['description' => 'Ensina a trabalhar em grupo.', 'question_id' => '10', 'profile_id' => '4', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['description' => 'Prepara para ser alguém no mercado de trabalho, não apenas mais um.', 'question_id' => '10', 'profile_id' => '5', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['description' => 'Transmite o conteúdo completo, sem deixar nada para trás.', 'question_id' => '10', 'profile_id' => '6', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['description' => 'Prefere atividades manuais.', 'question_id' => '11', 'profile_id' => '1', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['description' => 'Presta atenção e é estudioso.', 'question_id' => '11', 'profile_id' => '2', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['description' => 'Fica devaneando, desenhando ou escrevendo poesia.', 'question_id' => '11', 'profile_id' => '3', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['description' => 'Tenta ajudar os colegas a tirar dúvidas.', 'question_id' => '11', 'profile_id' => '4', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['description' => 'Costuma tomar a frente das coisas.', 'question_id' => '11', 'profile_id' => '5', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['description' => 'É bem organizado.', 'question_id' => '11', 'profile_id' => '6', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['description' => 'Instalar, massagear, cozinhar.', 'question_id' => '12', 'profile_id' => '1', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['description' => 'Ler um livro científico.', 'question_id' => '12', 'profile_id' => '2', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['description' => 'Fazer aula de música, desenho ou teatro.', 'question_id' => '12', 'profile_id' => '3', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['description' => 'Engajar-se em um trabalho voluntário.', 'question_id' => '12', 'profile_id' => '4', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['description' => 'Virar representante de classe.', 'question_id' => '12', 'profile_id' => '5', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['description' => 'Fazer um orçamento ou planejamento de um projeto.', 'question_id' => '12', 'profile_id' => '6', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['description' => 'Honesto quando solicitado.', 'question_id' => '13', 'profile_id' => '1', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['description' => 'Ponderado e criterioso nas suas escolhas.', 'question_id' => '13', 'profile_id' => '2', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['description' => 'Sensível ou despojado.', 'question_id' => '13', 'profile_id' => '3', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['description' => 'Empático e acolhedor.', 'question_id' => '13', 'profile_id' => '4', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['description' => 'Autoritário ou sedutor.', 'question_id' => '13', 'profile_id' => '5', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['description' => 'Cuidadoso com o que fala.', 'question_id' => '13', 'profile_id' => '6', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['description' => 'Razão.', 'question_id' => '14', 'profile_id' => '1', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['description' => 'Investigação.', 'question_id' => '14', 'profile_id' => '2', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['description' => 'Imaginação.', 'question_id' => '14', 'profile_id' => '3', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['description' => 'Colaboração.', 'question_id' => '14', 'profile_id' => '4', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['description' => 'Ambição.', 'question_id' => '14', 'profile_id' => '5', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['description' => 'Disciplina.', 'question_id' => '14', 'profile_id' => '6', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['description' => 'Uma grama de ação vale uma tonelada de teoria. (Friedrich Engels)', 'question_id' => '15', 'profile_id' => '1', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['description' => 'Existe apenas um bem, o saber; e apenas um mal, a ignorância. (Sócrates).', 'question_id' => '15', 'profile_id' => '2', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['description' => 'A sensibilidade e a imaginação conservam a mocidade imortal da alma. (Anne Louise Germaine de Staël)', 'question_id' => '15', 'profile_id' => '3', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['description' => 'Ser empático é ver o mundo com os olhos do outro e não ver o nosso mundo refletido nos olhos dele. (Carl Rogers)', 'question_id' => '15', 'profile_id' => '4', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['description' => 'Lute com determinação, abrace a vida com paixão, perca com classe e vença com ousadia, porque o mundo pertence a quem se atreve e a vida é muito bela para ser insignificante. (C. Chaplin)', 'question_id' => '15', 'profile_id' => '5', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['description' => 'Mais vale um pássaro na mão do que dois voando. (Ditado popular).', 'question_id' => '15', 'profile_id' => '6', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()]
+        ];
+        DB::table('answers')->delete();
+        Answer::insert($data);
+    }
+}
