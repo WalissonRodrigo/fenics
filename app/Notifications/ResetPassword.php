@@ -1,11 +1,11 @@
 <?php
-namespace Backpack\Base\app\Notifications;
+namespace App\Notifications;
 
-use Illuminate\Auth\Notifications\ResetPassword as ResetPassword;
+use Backpack\Base\app\Notifications\ResetPasswordNotification as ResetPasswordNotification;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class ResetPasswordNotification extends ResetPassword
+class ResetPassword extends ResetPasswordNotification
 {
     /**
      * Build the mail representation of the notification.
