@@ -55,7 +55,16 @@ class PersonRequest extends FormRequest
     public function messages()
     {
         return [
-            //
+            'email.email' => 'O campo Email deve conter a estrutura de um email real.',
+            'name.required' => 'O campo Nome é obrigatório.',
+            'email.required' => 'O campo Email é obrigatório.',
+            'phone.required' => 'O campo Telefone é obrigatório.',
+            'birth_date.required' => 'O campo Data de Nascimento é obrigatório.',
+            'profile.required' => 'Escolher alternativas entre todas as perguntas do Teste Vocacional é obrigatório',
+            'schooling_id.required' => 'O campo Nível de Escolaridade é obrigatório.',
+            'birth_date.date' => 'Apenas Datas são aceitas no campo de Data de Nascimento',
+            'profile.array' => 'Responder ao Teste Vocacional é obrigatório',
+            'schooling_id.numeric' => 'Pelo menos 1 opção para o Nível de Escolaridade deve ser preenchido.'
         ];
     }
 }

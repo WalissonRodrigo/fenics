@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 
 // VALIDATION: change the requests to match your own file names if you need form validation
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 use App\Http\Requests\PersonRequest as StoreRequest;
 use App\Http\Requests\PersonRequest as UpdateRequest;
 use App\Models\Question;
@@ -12,7 +14,6 @@ use App\Models\Person;
 use App\Models\Answer;
 use App\Models\Profile;
 use App\Models\Schooling;
-use Illuminate\Support\Facades\Auth;
 
 /**
  * Class PersonCrudController
@@ -76,13 +77,14 @@ class PersonCrudController extends CrudController
                 'format' => 'd/m/Y'
             ]
         ]);
-        //
-        $this->crud->addFields([
-            [   // CustomHTML
+        if (backpack_auth()->guest()) {
+            $this->crud->addField([   // CustomHTML
                 'name' => 'separator0',
                 'type' => 'custom_html',
                 'value' => '<div class="box-header with-border"><h3 class="box-title">Dados para Pessoais</h3></div>'
-            ],
+            ]);
+        }
+        $this->crud->addFields([
             [
                 'name' => 'name',
                 'type' => 'text',
@@ -176,7 +178,25 @@ class PersonCrudController extends CrudController
 
     public function store(StoreRequest $request)
     {
-        // your additional operations before save here 
+        $this->validate($request, [
+            'name' => 'required|min:3|max:100',
+            'email' => 'required|email|min:5|max:255',
+            'phone' => 'required',
+            'birth_date' => 'required|date',
+            'profile' => 'required|array',
+            'schooling_id' => 'required|numeric'
+        ], [
+            'email.email' => 'O campo Email deve conter a estrutura de um email real.',
+            'name.required' => 'O campo Nome é obrigatório.',
+            'email.required' => 'O campo Email é obrigatório.',
+            'phone.required' => 'O campo Telefone é obrigatório.',
+            'birth_date.required' => 'O campo Data de Nascimento é obrigatório.',
+            'profile.required' => 'Escolher alternativas entre todas as perguntas do Teste Vocacional é obrigatório',
+            'schooling_id.required' => 'O campo Nível de Escolaridade é obrigatório.',
+            'birth_date.date' => 'Apenas Datas são aceitas no campo de Data de Nascimento',
+            'profile.array' => 'Responder ao Teste Vocacional é obrigatório',
+            'schooling_id.numeric' => 'Pelo menos 1 opção para o Nível de Escolaridade deve ser preenchido.'
+        ]);
         $request['phone'] = (int)str_replace(["(", ")", " ", "-"], "", $request['phone']);
         $request['profile_id'] = self::filterProfile($request);
         $redirect_location = parent::storeCrud($request);
@@ -211,7 +231,7 @@ class PersonCrudController extends CrudController
         return view('vendor.backpack.crud.create_vocational', $this->data);
     }
 
-    public function storeVocational(StoreRequest $request = null)
+    public function storeVocational(Request $request)
     {
         //$this->crud->hasAccessOrFail('create');
 
@@ -226,6 +246,26 @@ class PersonCrudController extends CrudController
                 $request->request->set($key, null);
             }
         }
+        $this->validate($request, [
+            'name' => 'required|min:3|max:100',
+            'email' => 'required|email|min:5|max:255',
+            'phone' => 'required',
+            'birth_date' => 'required|date',
+            'profile' => 'required|array',
+            'schooling_id' => 'required|numeric'
+        ], [
+            'email.email' => 'O campo Email deve conter a estrutura de um email real.',
+            'name.required' => 'O campo Nome é obrigatório.',
+            'email.required' => 'O campo Email é obrigatório.',
+            'phone.required' => 'O campo Telefone é obrigatório.',
+            'birth_date.required' => 'O campo Data de Nascimento é obrigatório.',
+            'profile.required' => 'Escolher alternativas entre todas as perguntas do Teste Vocacional é obrigatório',
+            'schooling_id.required' => 'O campo Nível de Escolaridade é obrigatório.',
+            'birth_date.date' => 'Apenas Datas são aceitas no campo de Data de Nascimento',
+            'profile.array' => 'Responder ao Teste Vocacional é obrigatório',
+            'schooling_id.numeric' => 'Pelo menos 1 opção para o Nível de Escolaridade deve ser preenchido.'
+        ]);
+
         $request['phone'] = (int)str_replace(["(", ")", " ", "-"], "", $request['phone']);
         $request['profile_id'] = self::filterProfile($request);
 
