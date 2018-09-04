@@ -41,6 +41,11 @@ class ProfileCrudController extends CrudController
                 'label' => 'Perfil',
                 'limit' => 255
             ], [
+                'name' => 'expertise',
+                'type' => 'text',
+                'label' => 'Área de Atuação',
+                'limit' => 255
+            ], [
                 'name' => 'like',
                 'type' => 'text',
                 'label' => 'Gostos',
@@ -73,6 +78,10 @@ class ProfileCrudController extends CrudController
                 'name' => 'name',
                 'type' => 'text',
                 'label' => 'Perfil'
+            ], [
+                'name' => 'expertise',
+                'type' => 'text',
+                'label' => 'Áreas de Atuação'
             ], [
                 'name' => 'like',
                 'type' => 'text',

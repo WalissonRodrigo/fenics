@@ -31,7 +31,8 @@ class ProfileRequest extends FormRequest
             'values' => 'required|min:3|max:255',
             'perspective' => 'required|min:3|max:255',
             'view' => 'required|min:3|max:255',
-            'fear' => 'required|min:3|max:255'
+            'fear' => 'required|min:3|max:255',
+            'expertise' => 'required|min:3|max:255'
         ];
     }
 
@@ -43,7 +44,7 @@ class ProfileRequest extends FormRequest
     public function attributes()
     {
         return [
-            'name'=>'Nome', 'like'=>'Gostos', 'values'=>'Valores', 'perspective'=>'Perspectivas', 'view'=>'Visão', 'fear'=>'Receios'
+            'name' => 'Perfil', 'like' => 'Gostos', 'values' => 'Valores', 'perspective' => 'Perspectivas', 'view' => 'Visão', 'fear' => 'Receios', 'expertise' => 'Áreas de Atuação'
         ];
     }
 

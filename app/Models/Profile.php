@@ -13,7 +13,7 @@ class Profile extends Model
 {
     use CrudTrait;
 
-    protected $fillable = ['name', 'like', 'values', 'perspective', 'view', 'fear'];
+    protected $fillable = ['name', 'like', 'values', 'perspective', 'view', 'fear', 'expertise'];
 
     public function peoples()
     {

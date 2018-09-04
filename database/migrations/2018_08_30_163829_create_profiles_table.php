@@ -21,6 +21,7 @@ class CreateProfilesTable extends Migration
             $table->string('perspective');
             $table->string('view');
             $table->string('fear');
+            $table->string('expertise');
             $table->timestamps();
         });
     }
