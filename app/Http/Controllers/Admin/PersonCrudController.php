@@ -135,8 +135,8 @@ class PersonCrudController extends CrudController
                 ]
             ]
         ]);
-        $questions = Question::orderByRaw("RAND()")->get();
-        $answers = Answer::orderByRaw("RAND()")->get();
+        $questions = Question::inRandomOrder()->get();
+        $answers = Answer::inRandomOrder()->get();
         $formProfile = array();
         foreach ($questions as $q) {
             $formAnswer = array();
