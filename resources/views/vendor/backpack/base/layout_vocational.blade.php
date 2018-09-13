@@ -55,55 +55,60 @@
 		})();
 	</script> --}}
     <!-- Site wrapper -->
-    <div class="wrapper">
+    @yield('screensave')
+    <div id="screensave_page">
+      <div class="wrapper">
 
-      <header class="main-header">
-        <!-- Logo -->
-        <a href="{{ url('') }}" class="logo">
-          <!-- mini logo for sidebar mini 50x50 pixels -->
-          <span class="logo-mini">{!! config('backpack.base.logo_mini') !!}</span>
-          <!-- logo for regular state and mobile devices -->
-          <span class="logo-lg">{!! config('backpack.base.logo_lg') !!}</span>
-        </a>
-        <!-- Header Navbar: style can be found in header.less -->
-        <nav class="navbar navbar-static-top" role="navigation">
-          <!-- Sidebar toggle button-->
-         {{--  <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
-            <span class="sr-only">{{ trans('backpack::base.toggle_navigation') }}</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a> --}}
-
-          <div class="navbar-custom-menu">
-            <ul class="nav navbar-nav">
-                <li><a href="{{ url('/') }}"><i class="fa fa-plus-circle"></i> <span>Novo Teste</span></a></li>
-            </ul>
+        <header class="main-header">
+          <!-- Logo -->
+          <a href="{{ url('') }}" class="logo">
+            <!-- mini logo for sidebar mini 50x50 pixels -->
+            <span class="logo-mini">{!! config('backpack.base.logo_mini') !!}</span>
+            <!-- logo for regular state and mobile devices -->
+            <span class="logo-lg">{!! config('backpack.base.logo_lg') !!}</span>
+          </a>
+          <!-- Header Navbar: style can be found in header.less -->
+          <nav class="navbar navbar-static-top" role="navigation">
+            <!-- Sidebar toggle button-->
+            {{--  <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+              <span class="sr-only">{{ trans('backpack::base.toggle_navigation') }}</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </a> --}}
+  
+            <div class="navbar-custom-menu">
+              <ul class="nav navbar-nav">
+                  <li><a href="{{ url('/') }}"><i class="fa fa-plus-circle"></i> <span>Novo Teste</span></a></li>
+              </ul>
+          </div>
+  
+          </nav>
+        </header>
+  
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+          <!-- Content Header (Page header) -->
+  
+            @yield('header')
+  
+          <!-- Main content -->
+          <section class="content">
+  
+            @yield('content')
+  
+          </section>
+          <!-- /.content -->
         </div>
-
-        </nav>
-      </header>
-
-	  <!-- Content Wrapper. Contains page content -->
-      <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
-         @yield('header')
-
-        <!-- Main content -->
-        <section class="content">
-
-          @yield('content')
-
-        </section>
-        <!-- /.content -->
+        <!-- /.content-wrapper -->
+  
+        <footer class="main-footer">
+          {{ trans('backpack::base.handcrafted_by') }} <a target="_blank" href="{{ config('backpack.base.developer_link') }}">{{ config('backpack.base.developer_name') }}</a>.
+        </footer>
       </div>
-      <!-- /.content-wrapper -->
-
-      <footer class="main-footer">
-        {{ trans('backpack::base.handcrafted_by') }} <a target="_blank" href="{{ config('backpack.base.developer_link') }}">{{ config('backpack.base.developer_name') }}</a>.
-      </footer>
+      <!-- ./wrapper -->
     </div>
-    <!-- ./wrapper -->
+
 
 
     @yield('before_scripts')

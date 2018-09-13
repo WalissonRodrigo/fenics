@@ -85,6 +85,11 @@ class PersonCrudController extends CrudController
                 'type' => 'custom_html',
                 'value' => '<div class="box-header with-border"><h3 class="box-title">Dados para Pessoais</h3></div>'
             ]);
+            $this->crud->addField([
+                'name' => 'fasaScreenSaver',
+                'type' => 'screensave',
+                'value' => config("APP_URL").'/video/Institucional-FaculdadesSantoAgostinho.mp4'
+            ]);
         }
         $this->crud->addFields([
             [
