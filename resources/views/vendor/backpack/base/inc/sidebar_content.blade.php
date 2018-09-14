@@ -5,3 +5,4 @@
 <li><a href='{{ backpack_url('question') }}'><i class='fa fa-question-circle'></i> <span>Perguntas</span></a></li>
 <li><a href='{{ backpack_url('profile') }}'><i class='fa fa-user-circle'></i> <span>Perfis</span></a></li>
 <li><a href='{{ backpack_url('schooling') }}'><i class='fa fa-graduation-cap'></i> <span>Escolaridades</span></a></li>
+<!--<li><a href="{{ backpack_url('elfinder') }}"><i class="fa fa-files-o"></i> <span>{{ trans('backpack::crud.file_manager') }}</span></a></li>-->

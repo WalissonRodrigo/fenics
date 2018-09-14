@@ -7,6 +7,7 @@
     "require": {
         "php": "^7.1.3",
         "backpack/crud": "^3.4",
+        "barryvdh/laravel-elfinder": "^0.4.1",
         "fideloper/proxy": "^4.0",
         "laravel/framework": "5.6.*",
         "laravel/tinker": "^1.0",
@@ -49,7 +50,7 @@
             "@php artisan key:generate",
             "@php artisan backpack:base:install --timeout=600",
             "@php artisan backpack:crud:install --timeout=600",
-            "@php artisan db:seed"
+            "@php artisan migrate --step --seed"
         ],
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
