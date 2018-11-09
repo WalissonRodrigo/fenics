@@ -13,6 +13,7 @@ Route::group([
 ], function () { 
     // custom admin routes
     CRUD::resource('person', 'PersonCrudController');
+    CRUD::resource('arduino', 'ArduinoCrudController');
     CRUD::resource('answer', 'AnswerCrudController');
     CRUD::resource('question', 'QuestionCrudController');
     CRUD::resource('profile', 'ProfileCrudController')->with(function () {

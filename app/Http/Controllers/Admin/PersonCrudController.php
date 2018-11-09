@@ -88,7 +88,7 @@ class PersonCrudController extends CrudController
             $this->crud->addField([
                 'name' => 'fasaScreenSaver',
                 'type' => 'screensave',
-                'value' => config("APP_URL").'/video/Institucional-FaculdadesSantoAgostinho.mp4'
+                'value' => config("APP_URL") . '/video/Institucional-FaculdadesSantoAgostinho.mp4'
             ]);
         }
         $this->crud->addFields([
@@ -219,17 +219,15 @@ class PersonCrudController extends CrudController
 
     public function createVocational()
     {
-        //$this->crud->hasAccessOrFail('createVocational');
-
-        // prepare the fields you need to show
-        $this->data['crud'] = $this->crud;
-        $this->data['route'] = route('vocational.store');
-        $this->data['saveAction'] = $this->getSaveAction();
-        $this->data['fields'] = $this->crud->getCreateFields();
-        $this->data['title'] = "Novo Teste Vocacional";
-
+        $questions = Question::inRandomOrder()->get();
+        $answers = Answer::inRandomOrder()->get();
+        $screensave = [
+            'name' => 'fasaScreenSaver',
+            'type' => 'screensave',
+            'value' => config("APP_URL") . '/video/Institucional-FaculdadesSantoAgostinho.mp4'
+        ];
         // load the view from /resources/views/vendor/backpack/crud/ if it exists, otherwise load the one in the package
-        return view('vendor.backpack.crud.create_vocational', $this->data);
+        return view('vendor.backpack.crud.create_nomouse_vocational', compact('screensave', 'answers', 'questions'));
     }
 
     public function storeVocational(StoreVocationalRequest $request)

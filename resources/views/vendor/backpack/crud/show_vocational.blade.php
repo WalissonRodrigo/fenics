@@ -79,4 +79,31 @@
 @section('after_scripts')
 	<script src="{{ asset('vendor/backpack/crud/js/crud.js') }}"></script>
 	<script src="{{ asset('vendor/backpack/crud/js/show.js') }}"></script>
+	<script>
+		var timeSleep = setInterval(() => {
+			window.location.href = "{{ url('/') }}";
+		}, 210000);
+		document.addEventListener('keyup', e => {
+			switch (e.key) {
+				case "F2":
+						e.preventDefault();
+						resetInterval();
+						break;
+				case "Enter":
+						e.preventDefault();
+						resetInterval();
+						break;
+				default:
+						resetInterval();
+						break;
+			}
+		});
+		function resetInterval() {
+				clearInterval(timeSleep);
+				timeSleep = setInterval(() => {
+					window.location.href = "{{ url('/') }}";
+				}, 210000);
+		}
+
+	</script>
 @endsection

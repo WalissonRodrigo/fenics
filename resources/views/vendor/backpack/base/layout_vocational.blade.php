@@ -55,6 +55,7 @@
 		})();
 	</script> --}}
     <!-- Site wrapper -->
+    @yield('style')
     @yield('screensave')
     <div id="screensave_page">
       <div class="wrapper">

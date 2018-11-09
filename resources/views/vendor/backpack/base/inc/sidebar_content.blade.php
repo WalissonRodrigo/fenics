@@ -5,3 +5,4 @@
 <li><a href='{{ backpack_url('question') }}'><i class='fa fa-question-circle'></i> <span>Perguntas</span></a></li>
 <li><a href='{{ backpack_url('profile') }}'><i class='fa fa-user-circle'></i> <span>Perfis</span></a></li>
 <li><a href='{{ backpack_url('schooling') }}'><i class='fa fa-graduation-cap'></i> <span>Escolaridades</span></a></li>
+<li><a href='{{ backpack_url('arduino') }}'><i class="fa fa-microchip"></i> <span>Arduinos</span></a></li>

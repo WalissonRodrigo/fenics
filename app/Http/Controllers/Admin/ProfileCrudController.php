@@ -8,6 +8,7 @@ use Backpack\CRUD\app\Http\Controllers\CrudController;
 use App\Http\Requests\ProfileRequest as StoreRequest;
 use App\Http\Requests\ProfileRequest as UpdateRequest;
 use App\Models\Person;
+use App\Models\Arduino;
 
 /**
  * Class ProfileCrudController
@@ -113,7 +114,7 @@ class ProfileCrudController extends CrudController
         }
     }
 
-    public function showVocaional($id)
+    public function showVocational($id)
     {
         //$this->crud->hasAccessOrFail('show');
 
@@ -142,6 +143,7 @@ class ProfileCrudController extends CrudController
         $this->data['title'] = "Perfil do Teste Vocacional";
         $this->crud->removeButton('view');
         $this->crud->removeButton('delete');
+        Arduino::writeCommand();
         // load the view from /resources/views/vendor/backpack/crud/ if it exists, otherwise load the one in the package
         return view($this->crud->getShowView(), $this->data);
     }
