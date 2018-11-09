@@ -81,26 +81,30 @@
 	<script src="{{ asset('vendor/backpack/crud/js/show.js') }}"></script>
 	<script>
 		var timeSleep = setInterval(() => {
+			clearInterval(timeSleep);
 			window.location.href = "{{ url('/') }}";
 		}, 210000);
 		document.addEventListener('keyup', e => {
 			switch (e.key) {
 				case "F2":
-						e.preventDefault();
 						resetInterval();
+						window.location.href = "{{ url('/') }}";
 						break;
 				case "Enter":
-						e.preventDefault();
 						resetInterval();
+						window.location.href = "{{ url('/') }}";
 						break;
 				default:
 						resetInterval();
 						break;
 			}
 		});
+		document.addEventListener("mousemove", e => {
+			resetInterval();
+		});
 		function resetInterval() {
+			timeSleep = setInterval(() => {
 				clearInterval(timeSleep);
-				timeSleep = setInterval(() => {
 					window.location.href = "{{ url('/') }}";
 				}, 210000);
 		}
