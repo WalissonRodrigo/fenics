@@ -22,7 +22,7 @@ return [
     'developer_name' => 'Walisson Rodrigo',
 
     // Developer website. Link in footer.
-    'developer_link' => 'http://facebook.com/walissonrodrigo0',
+    'developer_link' => 'https://www.linkedin.com/in/walissonrodrigo',
 
     // Show powered by Laravel Backpack in the footer?
     'show_powered_by' => true,
