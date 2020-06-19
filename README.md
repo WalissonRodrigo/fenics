@@ -17,7 +17,6 @@ composer install
 ```bash
 php artisan backpack:base:install
 php artisan backpack:crud:install
-php artisan migrate --step --seed
 ```
 
 > Execute suas migrações para criar as tabelas e as seeds que irão preencher o sistema com dados iniciais. O exemplo abaixo faz isso tudo de uma vez.
